@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import {MatSidenavModule} from '@angular/material/Sidenav';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import{MatSnackBarModule} from '@angular/material/snack-bar';
 import  { MatGridListModule} from '@angular/material/grid-list';
 import  {  MatMenuModule} from '@angular/material/menu';
