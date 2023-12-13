@@ -1,5 +1,5 @@
 <mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
-  <a routerLink="/home"> Home</a>
+  <a routerLink="/home"> Mica Shop</a>
   <button mat-icon-button [mat-menu-trigger-for]="menu">
     <mat-icon [matBadge]="1" matBadgeColor="warn">shopping_cart</mat-icon>
   </button>
@@ -12,19 +12,19 @@
       <div class="py-3">
         <div class="flex justify-between font-light mb-2">
           Products X 1
-          <span class="font-bold">{{ "250" | currency : " DH " }}</span>
+          <span class="font-bold">{{ "250" | currency }}</span>
         </div>
         <div class="flex justify-between font-light mb-2">
           Products X 1
-          <span class="font-bold">{{ "250" | currency : " DH " }}</span>
+          <span class="font-bold">{{ "250" | currency }}</span>
         </div>
         <div class="flex justify-between font-light mb-2">
           Products X 1
-          <span class="font-bold">{{ "250" | currency : " DH " }}</span>
+          <span class="font-bold">{{ "250" | currency }}</span>
         </div>
         <div class="flex justify-between py-3 font-light">
           <span class="font-bold">Total :</span>
-          <span class="font-bold">{{ "2000" | currency : " DH " }}</span>
+          <span class="font-bold">{{ "2000" | currency }}</span>
         </div>
         <div class="pt-3 flex justify-between">
           <button class="bg-rose-600 text-white rounded-full w-9 h-9">

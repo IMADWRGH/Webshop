@@ -11,6 +11,49 @@
     <app-product-header
       (columnsCountChange)="onColsCountChange($event)"
     ></app-product-header>
-    {{ categories }}
+    <mat-grid-list gutterSize="16" [cols]="clos" [rowHeight]="rows">
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="clos === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>
