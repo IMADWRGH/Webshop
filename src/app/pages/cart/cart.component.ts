@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { reduce } from 'rxjs';
 import { Cart, CartItem } from 'src/app/models/Cart.model';
 @Component({
   selector: 'app-cart',
   templateUrl: `cart.component.html`,
 })
 export class CartComponent implements OnInit {
-
-  ngOnInit(): void {
-    this.dataSource = this.cart.items;
-  }
-
-
   cart: Cart = {
     items: [{
       product: "https://via.placeholder.com/150",
@@ -33,6 +28,33 @@ export class CartComponent implements OnInit {
     'total',
     'action'
   ];
+
+  ngOnInit(): void {
+    this.dataSource = this.cart.items;
+  }
+  onAddQuantity(items: Array<CartItem>): number {
+    return items.map((item) => item.quantity + 1).reduce((prev, current) => prev + current, 0)
+  }
+  onRemoveQuantity(_t65: any) {
+    throw new Error('Method not implemented.');
+  }
+  onClearCart() {
+    throw new Error('Method not implemented.');
+  }
+  getTotal(arg0: CartItem[]): string | number {
+    throw new Error('Method not implemented.');
+  }
+  onCheckout() {
+    throw new Error('Method not implemented.');
+  }
+  onRemoveFromCart(_t107: any) {
+    throw new Error('Method not implemented.');
+  }
+
+
+
+
+
 
 
 }
