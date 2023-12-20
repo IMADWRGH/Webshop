@@ -8,7 +8,7 @@ import { ProductHeaderComponent } from './pages/home/Component/product-header/pr
 import { FiltersComponent } from './pages/home/Component/filters/filters.component';
 import { ProductBoxComponent } from './pages/home/Component/product-box/product-box.component';
 import { CartComponent } from './pages/cart/cart.component';
-
+import { CartService } from './services/cart.service'
 
 import { MaterialDesignModule } from './material-design.module';
 @NgModule({
@@ -27,7 +27,7 @@ import { MaterialDesignModule } from './material-design.module';
     MaterialDesignModule
 
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

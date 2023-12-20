@@ -1,30 +1,31 @@
 <mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
   <a routerLink="/home"> Mica Shop</a>
   <button mat-icon-button [mat-menu-trigger-for]="menu">
-    <mat-icon [matBadge]="1" matBadgeColor="warn">shopping_cart</mat-icon>
+    <mat-icon
+      [matBadge]="itemsQuantity"
+      [matBadgeHidden]="!itemsQuantity"
+      matBadgeColor="warn"
+      >shopping_cart</mat-icon
+    >
   </button>
   <mat-menu #menu="matMenu">
     <div class="p-3 divide-y divide-solide">
       <div class="pb-3 flex justify-between">
-        <span class="mr-16">1 Products </span>
+        <span class="mr-16">{{ itemsQuantity }} Products </span>
         <a routerLink="cart"> View Cart</a>
       </div>
-      <div class="py-3">
-        <div class="flex justify-between font-light mb-2">
-          Products X 1
-          <span class="font-bold">{{ "250" | currency }}</span>
-        </div>
-        <div class="flex justify-between font-light mb-2">
-          Products X 1
-          <span class="font-bold">{{ "250" | currency }}</span>
-        </div>
-        <div class="flex justify-between font-light mb-2">
-          Products X 1
-          <span class="font-bold">{{ "250" | currency }}</span>
+      <div class="py-3" *ngIf="cart.items.length">
+        <div
+          class="flex justify-between font-light mb-2"
+          *ngFor="let item of cart.items"
+        >
+          {{ item.name }}
+          {{ item.quantity }} x
+          <span class="font-bold">{{ item.price | currency }}</span>
         </div>
         <div class="flex justify-between py-3 font-light">
           <span class="font-bold">Total :</span>
-          <span class="font-bold">{{ "2000" | currency }}</span>
+          <span class="font-bold">{{ "222" | currency }}</span>
         </div>
         <div class="pt-3 flex justify-between">
           <button class="bg-rose-600 text-white rounded-full w-9 h-9">
