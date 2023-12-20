@@ -22,4 +22,8 @@ export class CartService {
     this._sackBar.open('1 item add to cart', 'ok', { duration: 3000 });
     console.log(this.cart.value)
   }
+
+  getTotal(items: Array<CartItem>): number {
+    return items.map((item) => item.price * item.quantity).reduce((prev, current) => prev + current, 0);
+  }
 }
