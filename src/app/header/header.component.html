@@ -25,7 +25,7 @@
         </div>
         <div class="flex justify-between py-3 font-light">
           <span class="font-bold">Total :</span>
-          <span class="font-bold">{{ "222" | currency }}</span>
+          <span class="font-bold">{{ getTotal(cart.items) | currency }}</span>
         </div>
         <div class="pt-3 flex justify-between">
           <button class="bg-rose-600 text-white rounded-full w-9 h-9">

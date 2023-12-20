@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { reduce } from 'rxjs';
 import { Cart, CartItem } from 'src/app/models/Cart.model';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: `cart.component.html`,
@@ -17,6 +17,8 @@ export class CartComponent implements OnInit {
     }
     ]
   }
+
+  constructor(private cartService: CartService) { }
 
   dataSource: Array<CartItem> = [];
   displayedColumns: Array<string> = [
@@ -35,21 +37,21 @@ export class CartComponent implements OnInit {
   onAddQuantity(items: Array<CartItem>): number {
     return items.map((item) => item.quantity + 1).reduce((prev, current) => prev + current, 0)
   }
-  onRemoveQuantity(_t65: any) {
-    throw new Error('Method not implemented.');
+  // onRemoveQuantity(_t65: any) {
+  //   throw new Error('Method not implemented.');
+  // }
+  // onClearCart() {
+  //   throw new Error('Method not implemented.');
+  // }
+  getTotal(items: Array<CartItem>): number {
+    return this.cartService.getTotal(items);
   }
-  onClearCart() {
-    throw new Error('Method not implemented.');
-  }
-  getTotal(arg0: CartItem[]): string | number {
-    throw new Error('Method not implemented.');
-  }
-  onCheckout() {
-    throw new Error('Method not implemented.');
-  }
-  onRemoveFromCart(_t107: any) {
-    throw new Error('Method not implemented.');
-  }
+  // onCheckout() {
+  //   throw new Error('Method not implemented.');
+  // }
+  // onRemoveFromCart(_t107: any) {
+  //   throw new Error('Method not implemented.');
+  // }
 
 
 
