@@ -17,15 +17,20 @@ export class HeaderComponent {
     return this._cart;
   }
 
-  set(cart: Cart) {
+  set cart(cart: Cart) {
     this._cart = cart;
-    this.itemsQuantity = cart.items.map((item) => item.quantity)
-      .reduce((prev, current) => prev + current, 0);
+    this.itemsQuantity = cart.items
+      .map((item) => item.quantity)
+      .reduce((prev, curent) => prev + curent, 0);
   }
+
 
   getTotal(items: Array<CartItem>): number {
     return this.cartService.getTotal(items);
   }
 
+  onClearCart(): void {
+    this.cartService.ClearCart();
+  }
 
 }
