@@ -33,25 +33,30 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = this.cart.items;
+    this.cartService.cart.subscribe((_cart) => {
+      this.cart = _cart;
+      this.dataSource = this.cart.items;
+    })
   }
-  onAddQuantity(items: Array<CartItem>): number {
-    return items.map((item) => item.quantity + 1).reduce((prev, current) => prev + current, 0)
+  onAddQuantity(items: CartItem): void {
+    this.cartService.addTocart(items);
   }
-  // onRemoveQuantity(_t65: any) {
-  //   throw new Error('Method not implemented.');
-  // }
-  // onClearCart() {
-  //   throw new Error('Method not implemented.');
-  // }
+  onRemoveQuantity(item: CartItem): void {
+    this.cartService.removeQuantity(item);
+  }
+  onClearCart() {
+    this.cartService.ClearCart();
+  }
   getTotal(items: Array<CartItem>): number {
     return this.cartService.getTotal(items);
   }
   // onCheckout() {
   //   throw new Error('Method not implemented.');
   // }
-  // onRemoveFromCart(_t107: any) {
-  //   throw new Error('Method not implemented.');
-  // }
+  onRemoveFromCart(item: CartItem): void {
+    this.cartService.removeFromCart(item);
+
+  }
 
 
 

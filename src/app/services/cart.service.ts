@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class CartService {
+
+
   cart = new BehaviorSubject<Cart>({ items: [] });
   constructor(private _sackBar: MatSnackBar) { }
 
@@ -21,6 +23,23 @@ export class CartService {
     this.cart.next({ items });
     this._sackBar.open('1 item add to cart', 'ok', { duration: 3000 });
   }
+  removeQuantity(item: CartItem) {
+    let itemForRemoval!: CartItem;
+    let filteredItem = this.cart.value.items.map((_item) => {
+      if (_item.id === item.id) {
+        _item.quantity--;
+        if (_item.quantity === 0) {
+          itemForRemoval = _item;
+        }
+      }
+
+    });
+
+    if (itemForRemoval) {
+      filteredItem = this.removeFromCart(itemForRemoval);
+    }
+    this._sackBar.open('1 item removed from cart', 'ok', { duration: 3000 });
+  }
 
   getTotal(items: Array<CartItem>): number {
     return items.map((item) => item.price * item.quantity).reduce((prev, current) => prev + current, 0);
@@ -30,4 +49,13 @@ export class CartService {
     this.cart.next({ items: [] });
     this._sackBar.open('cart is cleared', 'ok', { duration: 3000 });
   }
+
+  removeFromCart(item: CartItem): void {
+    const filteredItem = this.cart.value.items.filter((_item) => _item.id !== item.id)
+    this.cart.next({ items: filteredItem });
+    this._sackBar.open('1 item removed from cart', 'ok', { duration: 3000 });
+
+  }
+
+
 }
