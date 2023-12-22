@@ -12,8 +12,9 @@
       (columnsCountChange)="onColsCountChange($event)"
     ></app-product-header>
     <mat-grid-list gutterSize="16" [cols]="clos" [rowHeight]="rows">
-      <mat-grid-tile>
+      <mat-grid-tile *ngFor="let product of products">
         <app-product-box
+          [product]="product"
           class="w-full"
           [fullWidthMode]="clos === 1"
           (addToCart)="onAddToCart($event)"

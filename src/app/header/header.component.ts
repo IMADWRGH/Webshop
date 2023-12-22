@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../models/Cart.model';
 import { CartService } from '../services/cart.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { CartService } from '../services/cart.service';
 })
 export class HeaderComponent {
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private store: StoreService) { }
   private _cart: Cart = { items: [] };
   itemsQuantity = 0;
 
