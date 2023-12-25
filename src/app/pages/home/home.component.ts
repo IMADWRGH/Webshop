@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   categories: string | undefined;
   products: Array<Product> | undefined;
   sort = 'desc';
-  count = '12';
+  count = '25';
   productSubcription: Subscription | undefined
   onColsCountChange(colsNUm: number): void {
     this.clos = colsNUm;
