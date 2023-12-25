@@ -18,7 +18,9 @@
     </ng-container>
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let element">{{ element.price | currency }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.price | currency }}
+      </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="quantity">
@@ -40,28 +42,28 @@
         {{ element.quantity * element.price | currency }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
-        <span class="font-bold py-5 block"
-          >{{ getTotal(cart.items) | currency }}
-        </span>
+        <span class="font-bold py-5 block">{{
+          getTotal(cart.items) | currency
+        }}</span>
       </td>
     </ng-container>
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>
         <button
+          (click)="onClearCart()"
           mat-raised-button
           color="warn"
           class="float-right"
-          (click)="onClearCart()"
         >
           Clear All
         </button>
       </th>
       <td mat-cell *matCellDef="let element">
         <button
+          (click)="onRemoveFromCart(element)"
           mat-mini-fab
           color="warn"
           class="float-right"
-          (click)="onRemoveFromCart(element)"
         >
           <mat-icon>close</mat-icon>
         </button>

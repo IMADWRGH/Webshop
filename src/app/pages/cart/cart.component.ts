@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Cart, CartItem } from 'src/app/models/Cart.model';
 import { CartService } from 'src/app/services/cart.service';
 @Component({
@@ -6,37 +8,28 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: `cart.component.html`,
 })
 export class CartComponent implements OnInit {
-  cart: Cart = {
-    items: [{
-      product: "https://via.placeholder.com/150",
-      name: "snickers",
-      price: 24,
-      quantity: 23,
-      id: 1,
+  cart: Cart = { items: [] };
 
-    }
-    ]
-  }
 
-  constructor(private cartService: CartService) { }
-
-  dataSource: Array<CartItem> = [];
+  dataSource: CartItem[] = [];
   displayedColumns: Array<string> = [
     'product',
     'name',
     'price',
     'quantity',
-    // 'id',
     'total',
     'action'
   ];
 
+  cartSubscription: Subscription | undefined;
+
+  constructor(private cartService: CartService, private http: HttpClient) { }
+
   ngOnInit(): void {
-    this.dataSource = this.cart.items;
-    this.cartService.cart.subscribe((_cart) => {
+    this.cartSubscription = this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart;
-      this.dataSource = this.cart.items;
-    })
+      this.dataSource = _cart.items;
+    });
   }
   onAddQuantity(items: CartItem): void {
     this.cartService.addTocart(items);

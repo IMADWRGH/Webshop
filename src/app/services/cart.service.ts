@@ -10,7 +10,7 @@ export class CartService {
 
 
   cart = new BehaviorSubject<Cart>({ items: [] });
-  constructor(private _sackBar: MatSnackBar) { }
+  constructor(private _sanckBar: MatSnackBar) { }
 
   addTocart(item: CartItem): void {
     const items = [...this.cart.value.items];
@@ -21,7 +21,7 @@ export class CartService {
       items.push(item);
     }
     this.cart.next({ items });
-    this._sackBar.open('1 item add to cart', 'ok', { duration: 3000 });
+    this._sanckBar.open('1 item add to cart', 'ok', { duration: 3000 });
   }
 
 
@@ -45,7 +45,7 @@ export class CartService {
     }
 
     this.cart.next({ items: filteredItems });
-    this._sackBar.open('1 item removed from cart.', 'Ok', {
+    this._sanckBar.open('1 item removed from cart.', 'Ok', {
       duration: 3000,
     });
   }
@@ -61,7 +61,7 @@ export class CartService {
 
   ClearCart(): void {
     this.cart.next({ items: [] });
-    this._sackBar.open('cart is cleared', 'ok', { duration: 3000 });
+    this._sanckBar.open('cart is cleared', 'ok', { duration: 3000 });
   }
 
 
@@ -70,7 +70,7 @@ export class CartService {
     const filteredItem = this.cart.value.items.filter((_item) => _item.id !== item.id);
     if (update) {
       this.cart.next({ items: filteredItem });
-      this._sackBar.open('1 item removed from cart', 'ok', { duration: 3000 });
+      this._sanckBar.open('1 item removed from cart', 'ok', { duration: 3000 });
     }
 
     return filteredItem;

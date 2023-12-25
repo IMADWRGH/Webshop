@@ -11,8 +11,8 @@
       [ngClass]="{ 'px-8 flex flex-col justify-between': fullWidthMode }"
     >
       <div>
-        <h5>{{ product?.tilte }}</h5>
-        <p class="truncate hover:whitespace-normal">{{ product?.category }}</p>
+        <h5>{{ product?.category }}</h5>
+        <p class="truncate hover:whitespace-normal">{{ product?.tilte }}</p>
         <p *ngIf="fullWidthMode">{{ product?.description }}</p>
       </div>
       <div class="flex justify-between">
