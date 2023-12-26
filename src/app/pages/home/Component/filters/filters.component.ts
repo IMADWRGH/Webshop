@@ -9,25 +9,19 @@ import { StoreService } from 'src/app/services/store.service';
   ]
 })
 export class FiltersComponent implements OnInit, OnDestroy {
-
-
+  @Output() ShowCategory = new EventEmitter<string>();
+  categoriesSubscription: Subscription | undefined;
+  categories: string[] | undefined
 
   constructor(private storeService: StoreService) { }
 
 
   ngOnInit(): void {
-    this.categoriesSubscription = this.storeService.getAllCategories().subscribe((category) => {
-      this.categories = category;
+    this.categoriesSubscription = this.storeService.getAllCategories().subscribe((reponse: Array<string>) => {
+      this.categories = reponse;
+      console.log(this.categories);
     }
     );
-  }
-
-  @Output() ShowCategory = new EventEmitter<string>();
-  categoriesSubscription: Subscription | undefined;
-  categories: Array<string> | undefined
-
-  onShowCategory(category: string): void {
-    this.ShowCategory.emit(category);
   }
 
   ngOnDestroy(): void {
@@ -35,6 +29,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
       this.categoriesSubscription.unsubscribe();
     }
   }
+  onShowCategory(category: string): void {
+    this.ShowCategory.next(category);
 
+
+  }
 
 }
