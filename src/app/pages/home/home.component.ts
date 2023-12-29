@@ -12,6 +12,7 @@ const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
   templateUrl: `./home.component.html`,
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
   constructor(private cartService: CartService, private storeService: StoreService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   products: Array<Product> | undefined;
   sort = 'desc';
   count = '25';
+  category: string | undefined;
   productSubcription: Subscription | undefined
   onColsCountChange(colsNUm: number): void {
     this.clos = colsNUm;
@@ -36,7 +38,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onShowCategory(category: string): void {
-    this.categories = category
+    this.category = category;
+    this.getProduct();
+    console.log(category)
   }
 
   onAddToCart(product: Product): void {
@@ -50,9 +54,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getProduct(): void {
-    this.productSubcription = this.storeService.getAllProduct(this.count, this.sort).subscribe((_product) => {
+    this.productSubcription = this.storeService.getAllProduct(this.count, this.sort, this.category).subscribe((_product) => {
       this.products = _product;
     });
+    console.log(this.productSubcription)
   }
 
 
