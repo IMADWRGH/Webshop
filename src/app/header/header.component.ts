@@ -7,11 +7,16 @@ import { StoreService } from '../services/store.service';
   selector: 'app-header',
   templateUrl: `./header.component.html`,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   constructor(private cartService: CartService, private store: StoreService) { }
   private _cart: Cart = { items: [] };
-  itemsQuantity = 0;
+  itemsQuantity: number = 7;
+
+  ngOnInit(): void {
+    console.log("the number of items " + this.itemsQuantity);
+
+  }
 
   @Input()
   get cart(): Cart {
