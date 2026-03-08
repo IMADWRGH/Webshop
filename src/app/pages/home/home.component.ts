@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   onAddToCart(product: Product): void {
     this.cartService.addTocart({
       product: product.image,
-      name: product.tilte,
+      name: product.title,
       price: product.price,
       quantity: 1,
       id: product.id
