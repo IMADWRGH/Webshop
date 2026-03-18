@@ -1,28 +1,29 @@
-import { trigger } from '@angular/animations';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-header',
-  templateUrl: 'product-header.component.html'
+  templateUrl: './product-header.component.html',
 })
 export class ProductHeaderComponent {
   @Output() columnsCountChange = new EventEmitter<number>();
   @Output() itemsCountChange = new EventEmitter<number>();
-  @Output() sortCountChange = new EventEmitter<string>();
-  sort = 'desc';
+  @Output() sortChange = new EventEmitter<string>();
   itemsShowCount = 12;
+  sort = 'desc';
 
-  onSortUpdated(newSort: string): void {
-    this.sort = newSort;
-    this.sortCountChange.emit(newSort);
+  constructor() {}
+
+  onColumnsUpdated(colsNum: number): void {
+    this.columnsCountChange.emit(colsNum);
   }
 
   onItemsUpdated(count: number): void {
-    this.itemsShowCount = count;
     this.itemsCountChange.emit(count);
+    this.itemsShowCount = count;
   }
 
-  onColumnsUpdated(colsNUm: number): void {
-    this.columnsCountChange.emit(colsNUm);
+  onSortUpdated(newSort: string): void {
+    this.sortChange.emit(newSort);
+    this.sort = newSort;
   }
 }
