@@ -3,7 +3,8 @@ import { Product } from 'src/app/models/Product.model';
 
 @Component({
   selector: 'app-product-box',
-  templateUrl: `product-box.component.html`,
+  templateUrl: './product-box.component.html',
+  styleUrls: ['./product-box.component.css']
 })
 export class ProductBoxComponent {
 
